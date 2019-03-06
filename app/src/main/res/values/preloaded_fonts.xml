@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/jolly_lodger</item>
+        <item>@font/the_girl_next_door</item>
+        <item>@font/trade_winds</item>
+    </array>
+</resources>
