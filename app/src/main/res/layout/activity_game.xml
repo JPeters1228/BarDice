@@ -62,44 +62,45 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_marginTop="25dp"
             app:layout_constraintTop_toBottomOf="@+id/die1" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:id="@+id/linearLayout">
+            app:layout_constraintStart_toStartOf="parent" android:id="@+id/keepButtons">
         <ToggleButton
                 android:text="ToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/keepButton1" android:layout_weight="1"
                 android:textOff="Keep?" android:textOn="Saved" android:background="@drawable/keep_button_toggle"
-                android:layout_marginStart="8dp" android:onClick="onKeepClicked"/>
+                android:layout_marginStart="8dp" android:onClick="onKeepClicked" android:visibility="invisible"/>
         <ToggleButton
                 android:text="ToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/keepButton2" android:layout_weight="1"
                 android:textOff="Keep?" android:textOn="Saved" android:background="@drawable/keep_button_toggle"
-                android:layout_marginStart="8dp" android:onClick="onKeepClicked"/>
+                android:layout_marginStart="8dp" android:onClick="onKeepClicked" android:visibility="invisible"/>
         <ToggleButton
                 android:text="ToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/keepButton3" android:layout_weight="1"
                 android:textOff="Keep?" android:textOn="Saved" android:background="@drawable/keep_button_toggle"
-                android:layout_marginStart="8dp" android:layout_marginEnd="8dp" android:onClick="onKeepClicked"/>
+                android:layout_marginStart="8dp" android:layout_marginEnd="8dp" android:onClick="onKeepClicked"
+                android:visibility="invisible"/>
         <ToggleButton
                 android:text="ToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/keepButton4" android:layout_weight="1"
                 android:textOff="Keep?" android:textOn="Saved" android:background="@drawable/keep_button_toggle"
-                android:layout_marginEnd="8dp" android:onClick="onKeepClicked"/>
+                android:layout_marginEnd="8dp" android:onClick="onKeepClicked" android:visibility="invisible"/>
         <ToggleButton
                 android:text="ToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/keepButton5" android:layout_weight="1"
                 android:textOff="Keep?" android:textOn="Saved" android:background="@drawable/keep_button_toggle"
-                android:layout_marginEnd="8dp" android:onClick="onKeepClicked"/>
+                android:layout_marginEnd="8dp" android:onClick="onKeepClicked" android:visibility="invisible"/>
     </LinearLayout>
     <Button
             android:text="Roll!"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:id="@+id/rollButton" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/keepButtons" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/bar_dice_button" android:textSize="18sp" android:onClick="onRollClicked"/>
     <Button
@@ -110,7 +111,7 @@
             android:background="@drawable/bar_dice_button" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/newScoreButton"
-            android:textSize="18sp"/>
+            android:textSize="18sp" android:visibility="invisible" android:onClick="onPlayAgainClick"/>
     <Button
             android:text="Set New Score"
             android:layout_width="0dp"
@@ -119,7 +120,7 @@
             android:background="@drawable/bar_dice_button" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/endButton"
-            android:textSize="18sp"/>
+            android:textSize="18sp" android:visibility="invisible" android:onClick="onNewScoreClick"/>
     <Button
             android:text="End"
             android:layout_width="0dp"
@@ -127,5 +128,15 @@
             android:id="@+id/endButton"
             android:background="@drawable/bar_dice_button" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent" android:textSize="18sp"/>
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent" android:textSize="18sp"
+            android:visibility="invisible" android:onClick="onEndClick"/>
+    <Button
+            android:text="Keep Score"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/keepScoreButton" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rollButton" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:textSize="18sp" android:background="@drawable/bar_dice_button"
+            android:visibility="invisible"/>
 </android.support.constraint.ConstraintLayout>
