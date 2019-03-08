@@ -102,34 +102,42 @@
             android:id="@+id/rollButton" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/keepButtons" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bar_dice_button" android:textSize="18sp" android:onClick="onRollClicked"/>
+            android:background="@drawable/bar_dice_button" android:textSize="18sp" android:onClick="onRollClicked"
+            android:fontFamily="@font/trade_winds"/>
     <Button
             android:text="Play Again"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/playAgainButton"
-            android:background="@drawable/bar_dice_button" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/newScoreButton"
-            android:textSize="18sp" android:visibility="invisible" android:onClick="onPlayAgainClick"/>
+            android:background="@drawable/bar_dice_button"
+            android:textSize="16sp" android:visibility="invisible" android:onClick="onPlayAgainClick"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/newScoreButton" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="6dp"
+            android:fontFamily="@font/trade_winds"/>
     <Button
-            android:text="Set New Score"
+            android:text="New Score"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/newScoreButton"
-            android:background="@drawable/bar_dice_button" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/endButton"
-            android:textSize="18sp" android:visibility="invisible" android:onClick="onNewScoreClick"/>
+            android:background="@drawable/bar_dice_button"
+            android:textSize="16sp" android:visibility="invisible" android:onClick="onNewScoreClick"
+            app:layout_constraintStart_toEndOf="@+id/playAgainButton" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/endButton" app:layout_constraintTop_toTopOf="@+id/playAgainButton"
+            app:layout_constraintBottom_toBottomOf="@+id/playAgainButton" android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp" android:fontFamily="@font/trade_winds"/>
     <Button
-            android:text="End"
+            android:text="Exit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/endButton"
-            android:background="@drawable/bar_dice_button" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent" android:textSize="18sp"
-            android:visibility="invisible" android:onClick="onEndClick"/>
+            android:background="@drawable/bar_dice_button"
+            app:layout_constraintBottom_toBottomOf="@+id/newScoreButton"
+            android:textSize="16sp"
+            android:visibility="invisible" android:onClick="onEndClick"
+            app:layout_constraintStart_toEndOf="@+id/newScoreButton" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@+id/newScoreButton"
+            android:layout_marginStart="6dp" android:fontFamily="@font/trade_winds"/>
     <Button
             android:text="Keep Score"
             android:layout_width="145dp"
@@ -138,7 +146,7 @@
             app:layout_constraintTop_toBottomOf="@+id/rollButton" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:textSize="18sp" android:background="@drawable/bar_dice_button"
-            android:visibility="invisible" android:onClick="onKeepScoreClick"/>
+            android:visibility="invisible" android:onClick="onKeepScoreClick" android:fontFamily="@font/trade_winds"/>
     <TextView
             android:text="Your Score: Not Set"
             android:layout_width="wrap_content"
