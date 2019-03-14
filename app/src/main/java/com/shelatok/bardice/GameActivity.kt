@@ -28,7 +28,9 @@ class GameActivity : AppCompatActivity() {
     var highdie = 0
     var allnums = arrayListOf(0,0,0,0,0,0)
     var allDice = arrayListOf(0,0,0,0,0)
+    var keptNums = arrayListOf(0,0,0,0,0)
     var totalrolls = 3
+    var diffnums = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,9 @@ class GameActivity : AppCompatActivity() {
         val keepButtonArray = arrayListOf<ToggleButton>(keepButton1, keepButton2, keepButton3, keepButton4, keepButton5)
         for (a in 1..keepButtonArray.count()){
             keepButtonArray[a-1].visibility = INVISIBLE
+        }
+        for(a in 1..allnums.count()){
+            allnums[a-1] = 0
         }
         playAgainButton.visibility = VISIBLE
         newScoreButton.visibility = VISIBLE
@@ -96,42 +101,67 @@ class GameActivity : AppCompatActivity() {
             keepScoreButton.visibility = VISIBLE
         }
 
-        if (roll < totalrolls) {
+        for(a in 1..allnums.count()){
+            allnums[a-1] = 0
+        }
 
-            val countDownTimer = object: CountDownTimer(1000, 100) {
-                override fun onTick(millisUntilFinished: Long) {
-                    for (a in 1..keepButtonArray.count()) {
-                        if (!keepButtonArray[a-1].isChecked){
-                            var rollnum = rollDice()
-                            imgVArray[a-1].setImageResource(dicePicArray[rollnum-1])
-                            allDice[a-1] = rollnum
-                        }
-                    }
-                }
-                override fun onFinish() {
+        diffnums = 0
 
-                }
+        for (a in 1..keepButtonArray.count()){
+            if (keepButtonArray[a-1].isChecked){
+                allnums[allDice[a-1]-1]++
             }
-            countDownTimer.start()
+        }
+        println(allnums)
 
-            roll++
-            rollText.text = "Roll: $roll"
-
-            if (roll == totalrolls) {
-                val counttimer = object: CountDownTimer(1000, 100) {
-                    override fun onTick (millisFinished: Long){
-                    }
-                    override fun onFinish () {
-                        score()
-                    }
-                }
-                counttimer.start()
-
-
+        for (a in 1..allnums.count()){
+            if (allnums[a-1] != 0){
+                diffnums++
             }
         }
 
+        if (keptNums.contains(1) && diffnums == 2 || diffnums == 0) {
 
+            if (roll < totalrolls) {
+
+                val countDownTimer = object : CountDownTimer(1000, 100) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        for (a in 1..keepButtonArray.count()) {
+                            if (!keepButtonArray[a - 1].isChecked) {
+                                var rollnum = rollDice()
+                                imgVArray[a - 1].setImageResource(dicePicArray[rollnum - 1])
+                                allDice[a - 1] = rollnum
+                            }
+                        }
+                    }
+
+                    override fun onFinish() {
+
+                    }
+                }
+                countDownTimer.start()
+
+                roll++
+                rollText.text = "Roll: $roll"
+
+                if (roll == totalrolls) {
+                    val counttimer = object : CountDownTimer(1000, 100) {
+                        override fun onTick(millisFinished: Long) {
+                        }
+
+                        override fun onFinish() {
+                            score()
+                        }
+                    }
+                    counttimer.start()
+
+
+                }
+            }
+
+        } else {
+            Toast.makeText(this, "You can only keep ones with one other number", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -143,6 +173,15 @@ class GameActivity : AppCompatActivity() {
                 keepButtonArray[a-1].isChecked = false
             }
         }
+
+        for (a in 1..keepButtonArray.count()){
+            if(keepButtonArray[a-1].isChecked){
+                keptNums[a-1] = allDice[a-1]
+            } else {
+                keptNums[a-1] = 0
+            }
+        }
+        println(keptNums)
     }
 
     fun onKeepScoreClick(view: View){
@@ -162,6 +201,10 @@ class GameActivity : AppCompatActivity() {
         for (a in 1..allDice.count()){
             allDice[a-1] = 0
         }
+        for (a in 1..5){
+            keptNums[a-1] = 0
+        }
+
         currentScoreText.text = "Your Score: Not Set"
         playAgainButton.visibility = INVISIBLE
         newScoreButton.visibility = INVISIBLE
